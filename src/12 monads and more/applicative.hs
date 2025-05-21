@@ -10,3 +10,17 @@ customFmap2 (Just x) Nothing    = x
 customFmap2 (Just x) (Just y)   = x + y
 
 -- print $ customFmap1 Nothing
+
+main :: IO ()
+main = do
+    print $ (pure 1 :: [Int]) == [1]
+
+    print $ (pure (+1) <*> [1..3]) == [2..4]
+    print $ (pure (+1) <*> [1..3]) == (fmap (+1) [1..3])
+    
+    print $ (pure (+) <*> [1] <*> [2]) == [3]
+    
+    print $ (pure (*) <*> [1, 2] <*> [3, 4]) == [3, 4, 6, 8]
+    
+    -- infix operator instead of pure
+    print $ ((+) <$> [1] <*> [2]) == [3]

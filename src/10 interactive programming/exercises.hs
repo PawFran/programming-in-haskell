@@ -1,6 +1,6 @@
 import Data.Function
 
-promptForStr :: IO()
+promptForStr :: IO ()
 promptForStr = do   putStr "enter a word: "
                     word <- getLine
                     putStr "your input has "
